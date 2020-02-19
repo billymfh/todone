@@ -1,0 +1,13 @@
+<div class="row mt-2">
+  <div class="col text-center">
+    <h3>Welcome to ToDone</h3>
+    <% if logged_in? %>
+      <p>A simple todo app. Click the button below to view your lists.</p>
+      <%= link_to "Take me to my lists", lists_path, class: "btn btn-primary" %>
+    <% else %>
+      <p>A simple todo app. Click Sign Up to get started.</p>
+      <%= link_to "Sign Up", new_user_path, class: "btn btn-primary" %>
+      <p>Already have an account? <%= link_to "Sign In", "/login" %>
+    <% end %>
+  </div>
+</div>

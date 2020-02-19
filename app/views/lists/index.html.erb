@@ -1,0 +1,20 @@
+<div class="row mt-2 justify-content-center">
+  <div class="col">
+    <h3>My To Do Lists</h3>
+    <% if @lists.blank? %>
+      <p>You haven't created any lists yet.</p>
+    <% else %>
+      <div class="list-group">
+        <% @lists.each do |list| %>
+          <%= link_to list.name, list_path(list), class: "list-group-item list-group-item-action" %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="mt-2">
+      <%= simple_form_for List.new, remote: true do |f| %>
+        <%= f.input :name, placeholder: "Type name here to add a list", label: false %>
+        <%= f.submit "Add New list", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

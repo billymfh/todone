@@ -1,0 +1,32 @@
+<div class="row mt-2 justify-content-center">
+  <div class="col">
+    <h3><%= @list.name %></h3>
+    <ul class="list-group">
+      <% @list.list_items.each do |li| %>
+          <% if li.completed? %>
+            <li class="list-group-item list-group-item-success">
+              <%= link_to image_tag("check-icon.png"), mark_not_completed_list_item_path(li), class: "check-icon mr-3" %>
+              <span class="task completed-item"><%= li.task %></span>
+              <%= link_to "edit", edit_list_item_path(li), class: "text-primary ml-2" %>
+              <%= link_to "delete", list_item_path(li), method: :delete, data: { confirm: 'Delete this list item?' }, class: "text-danger", remote: true %>
+            </li>
+          <% else %>
+            <li class="list-group-item">
+              <%= link_to image_tag("check-icon.png"), mark_completed_list_item_path(li), class: "check-icon mr-3" %>
+              <span class="task"><%= li.task %></span>
+              <%= link_to "edit", edit_list_item_path(li), class: "text-primary ml-2" %>
+              <%= link_to "delete", list_item_path(li), method: :delete, data: { confirm: 'Delete this list item' }, class: "text-danger", remote: true %>
+            </li>
+          <% end %> 
+      <% end %>
+    </ul>
+    <div class="mt-2">
+      <%= simple_form_for ListItem.new, remote: true do |f| %>
+        <%= f.hidden_field :list_id, value: @list.id %>
+        <%= f.input :task, placeholder: "Add an item to your list", label: false %>
+        <%= f.submit "Add Item", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

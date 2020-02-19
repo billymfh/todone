@@ -1,0 +1,9 @@
+<div class="row mt-2">
+  <div class="col-3">
+    <h2 class="mt-2">Edit List Item</h2>
+    <%= simple_form_for @list_item, html: {novalidate: true} do |f| %>
+      <%= f.input :task %>
+      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+    <% end %>
+  </div> 
+</div>

@@ -1,0 +1,6 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid_task:
+  list: valid_list
+  task: "Task 1"
+  completed: false
